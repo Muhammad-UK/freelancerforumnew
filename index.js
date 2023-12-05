@@ -40,9 +40,10 @@ const render = () => {
   listingSection.innerHTML = mapFreelancersToHTML(freelancers);
 };
 
-const spantCount = document.querySelector(".spanCount");
+const spanCount = document.querySelector(".spanCount");
 const averageRate = document.querySelector(".averageRate");
 const listingSection = document.querySelector(".listingSection");
+const addButton = document.querySelector(".addButton");
 
 const names = [
   "Dr. Slice",
@@ -58,3 +59,8 @@ const names = [
 const occupations = ["gardener", "programmer", "teacher", "gardner"];
 
 const freelancers = [];
+
+addButton.addEventListener("click", () => {
+  freelancers.push(randomFreelancerObject());
+  render();
+});

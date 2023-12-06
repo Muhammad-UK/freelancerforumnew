@@ -3,9 +3,9 @@ const mapFreelancersToHTML = (arr) => {
     .map((value) => {
       return `
         <section>
-        <p>${value.name}</p>
-        <p>Hourly Rate: $${value.price.toFixed(2)}</p>
-        <p>Occupation: ${value.occupation}</p>
+        <p>${value.name}<br>
+        Hourly Rate: $${value.price.toFixed(2)}<br>
+        Occupation: ${value.occupation}</p>
         </section>
         `;
     })
@@ -63,4 +63,12 @@ const freelancers = [];
 addButton.addEventListener("click", () => {
   freelancers.push(randomFreelancerObject());
   render();
+});
+
+listingSection.addEventListener("click", (ev) => {
+  if (ev.target.tagName === "P") {
+    const idx = Array.from(ev.target.parentNode.children).indexOf(ev.target);
+    freelancers.splice(idx, 1);
+    render();
+  }
 });
